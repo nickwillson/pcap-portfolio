@@ -34,28 +34,28 @@ The communication pattern indicates payload delivery and possible internal recon
 → Strong asymmetry indicates download/payload delivery.
 
 4. **TLS inspection**
-   . SNI values extracted → included suspicious domains.
-   . Certificates matched known KongTuke/TDS infra.
-5. **Zeek logs (summary)
-   . conn.log: confirmed long-duration TLS sessions.
-   . ssl.log: JA3 fingerprints captured (to be used in IOC list).
+   - SNI values extracted → included suspicious domains.
+   - Certificates matched known KongTuke/TDS infra.
+5. **Zeek logs (summary)**
+   - conn.log: confirmed long-duration TLS sessions.
+   - ssl.log: JA3 fingerprints captured (to be used in IOC list).
    . http.log: malicious HTTP POSTs with URIs (/windows.php).
 
-Findings
-  . Victim established outbound TLS sessions, not user-driven web browsing.
-  . TLS session asymmetry shows inbound large payloads → malware delivery.
-  . HTTP POST patterns consistent with beaconing/C2 callback.
-  . Post-download, victim communicated with internal AD/DC services → likely reconnaissance or lateral movement.
+**Findings**
+  - Victim established outbound TLS sessions, not user-driven web browsing.
+  - TLS session asymmetry shows inbound large payloads → malware delivery.
+  - HTTP POST patterns consistent with beaconing/C2 callback.
+  - Post-download, victim communicated with internal AD/DC services → likely reconnaissance or lateral movement.
 
-MITRE ATT&CK Mapping
- . T1071.001 — Application Layer Protocol: Web Protocols (TLS/HTTPS)
- . T1105 — Ingress Tool Transfer
- . T1041 — Exfiltration Over C2 Channel (suspected, no evidence yet)
- . T1018 — Remote System Discovery (Kerberos/LDAP seen)
+**MITRE ATT&CK Mapping**
+ - T1071.001 — Application Layer Protocol: Web Protocols (TLS/HTTPS)
+ - T1105 — Ingress Tool Transfer
+ - T1041 — Exfiltration Over C2 Channel (suspected, no evidence yet)
+ - T1018 — Remote System Discovery (Kerberos/LDAP seen)
 
-Detection Opportunities
-  . Suricata rule: detect SNI values (hillcoweb.com, truglomedspa.com).
-  . Zeek detection: JA3 fingerprint alerts.
-  . SIEM correlation: Large asymmetric TLS flows (>20 MB server→client) from workstation to uncategorized IPs.
+**Detection Opportunities**
+  - Suricata rule: detect SNI values (hillcoweb.com, truglomedspa.com).
+  - Zeek detection: JA3 fingerprint alerts.
+  - SIEM correlation: Large asymmetric TLS flows (>20 MB server→client) from workstation to uncategorized IPs.
 
    
