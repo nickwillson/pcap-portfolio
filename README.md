@@ -9,4 +9,5 @@
 - Suspicious SNI: hillcoweb.com, truglomedspa.com
 - Likely behavior: TAG-124 / KongTuke TDS used to deliver payloads; post-download internal AD reconnaissance observed.
 
-
+### Acknowledgements
+  This analysis used training materials and a publicly-available PCAP from Malware-Traffic-Analysis.net. Special thanks to the maintainers and contributors of Malware-Traffic-Analysis.net for curating and providing high-quality, freely            accessible traffic captures and exercise writeups that enable learning and practical training for defenders. Please see https://www.malware-traffic-analysis.net for more exercises and attribution.
